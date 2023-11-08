@@ -1,0 +1,14 @@
+scripts:
+  format:
+    cmd: deno fmt
+    gitHook: pre-commit
+
+  dev:
+    cmd: deno run --env --watch src/main.ts
+    allow:
+      net: "0.0.0.0"
+      env:
+        - GITHUB_CLIENT_ID
+        - GITHUB_CLIENT_SECRET
+        - HOST
+      read: "./public/"
