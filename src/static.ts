@@ -18,7 +18,6 @@ router.get("*.ts", async (c, next) => {
 
   const a = await bundle(filePath, { "minify": true });
 
-
   c.header("Content-Type", "text/javascript");
   return c.body(a.code);
 });
