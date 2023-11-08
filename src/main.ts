@@ -11,8 +11,10 @@ app.use(compress());
 app.route("/api", apiRouter);
 app.route("/static", staticRouter);
 
-app.get("/", (c) => {
-  return c.text("Hello World!");
+app.get("/", async (c) => {
+  const index = new URL(import.meta.resolve("./views/index.html")).pathname;
+
+  return c.html(await Deno.readTextFile(index));
 });
 
 Deno.serve(app.fetch);

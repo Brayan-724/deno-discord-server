@@ -6,9 +6,23 @@ scripts:
   dev:
     cmd: deno run --env --watch src/main.ts
     allow:
-      net: "0.0.0.0"
+      net:
+        - "0.0.0.0"
+        # denosass (Sass compiler)
+        - "deno.land"
       env:
+        # deno_kv_oauth (Auth)
         - GITHUB_CLIENT_ID
         - GITHUB_CLIENT_SECRET
         - HOST
-      read: "./public/"
+        # emit (Bundler)
+        - DENO_DIR
+        - DENO_AUTH_TOKENS
+        - XDG_CACHE_HOME
+        - XDG_DATA_HOME
+        - HOME
+      read: 
+        - "./"
+        # emit (Bundler)
+        - "$HOME/.cache/deno"
+        - "$HOME/.local/share/deno-wasmbuild/"

@@ -2,7 +2,7 @@
   "unstable": ["kv"],
 
   "tasks": {
-    "dev": "deno run --allow-net --allow-env=GITHUB_CLIENT_ID,GITHUB_CLIENT_SECRET,HOST --allow-read=./ --env --watch src/main.ts"
+    "dev": "echo \"\n\n>>>> I recommend to install velociraptor (https://velociraptor.run) <<<<\n\" && deno run -qA https://code.velociraptor.run dev"
   },
 
   "imports": {
