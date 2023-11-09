@@ -4,6 +4,8 @@ import { compress } from "hono/middleware/compress/index.ts";
 import apiRouter from "./api.ts";
 import staticRouter from "./static.ts";
 
+import "./db.ts";
+
 const app = new Hono();
 
 app.use(compress());

@@ -3,6 +3,9 @@ scripts:
     cmd: deno fmt
     gitHook: pre-commit
 
+  setup\:kview:
+    cmd: deno run -A https://deno.land/x/kview/install.ts
+
   dev:
     cmd: deno run --env --watch src/main.ts
     allow:

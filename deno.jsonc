@@ -2,13 +2,17 @@
   "unstable": ["kv"],
 
   "tasks": {
-    "dev": "echo \"\n\n>>>> I recommend to install velociraptor (https://velociraptor.run) <<<<\n\" && deno run -qA https://code.velociraptor.run dev"
+    "vr": "echo \"\n\n>>>> I recommend to install velociraptor (https://velociraptor.run) <<<<\n\" && deno run -qA https://code.velociraptor.run",
+    "dev": "deno task vr dev",
+    "setup:kview": "deno task vr setup:kview"
   },
 
   "imports": {
-    "hono/": "https://deno.land/x/hono@v3.9.2/",
     "deno_kv_auth/": "https://deno.land/x/deno_kv_oauth@v0.10.0/",
+    "denosass/": "https://deno.land/x/denosass@1.0.6/",
     "emit/": "https://deno.land/x/emit@0.31.1/",
-    "denosass/": "https://deno.land/x/denosass@1.0.6/"
+    "hono/": "https://deno.land/x/hono@v3.9.2/",
+    "zod/": "https://deno.land/x/zod@v3.21.4/",
+    "std/": "https://deno.land/std@0.205.0/"
   }
 }
