@@ -11,6 +11,9 @@ scripts:
     allow:
       net:
         - "0.0.0.0"
+        # OAuth
+        - "github.com"
+        - "api.github.com"
         # denosass (Sass compiler)
         - "deno.land"
       env:

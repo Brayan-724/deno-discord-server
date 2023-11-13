@@ -103,7 +103,7 @@
             src="https://discordapp.com/assets/0e291f67c9274a1abdddeb3fd919cbaa.png"
           />
           <div class="channels-footer-details">
-            <span class="username">yourself</span>
+            <span class="username"><%USER%></span>
             <span class="tag">#0001</span>
           </div>
           <div class="channels-footer-controls button-group">
@@ -133,7 +133,15 @@
           <h2 class="menu-name">general</h2>
         </menu>
 
-        <section class="chat"></section>
+        <section class="chat">
+          <form action="/api/oauth/signin">
+            <button type="submit">Login</button>
+          </form>
+
+          <form action="/api/oauth/signout">
+            <button type="submit">Log out</button>
+          </form>
+        </section>
       </div>
     </main>
 
@@ -147,6 +155,7 @@
           opacity: 0.6;
         }
       </style>
+
       <g id="g4145" fill="#fff">
         <path
           id="path5"
