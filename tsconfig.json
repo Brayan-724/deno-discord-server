@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "jsx": "precompile",
+    "jsxImportSource": "hono/jsx",
+    "types": [
+      "./src/types.d.ts"
+    ]
+  }
+}
