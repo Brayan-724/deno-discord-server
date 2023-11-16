@@ -6,7 +6,7 @@
   },
 
   "compilerOptions": {
-    "jsx": "precompile",
+    "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
     "types": [
       "./src/types.d.ts"
