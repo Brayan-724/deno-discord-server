@@ -7,10 +7,12 @@ scripts:
     cmd: deno run -A https://deno.land/x/kview/install.ts
 
   dev:
-    cmd: deno run --env --watch src/main.ts
+    cmd: deno run --unstable --env --watch src/main.ts
     allow:
       net:
         - "0.0.0.0"
+        # Lit components
+        - "cdn.jsdelivr.net"
         # OAuth
         - "github.com"
         - "api.github.com"

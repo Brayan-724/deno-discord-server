@@ -147,7 +147,7 @@ type Incl<
   >,
 > = BooleanSwitcher<
   Includer,
-  {},
+  Entity["schema"]["_output"],
   never,
   & (Includer extends Pick<DbIncludeItem<Entity>, "select"> ? DbSelectReturn<
       Entity["schema"]["_output"],

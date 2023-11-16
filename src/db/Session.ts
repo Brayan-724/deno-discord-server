@@ -1,5 +1,5 @@
 import { z } from "zod/mod.ts";
-import { createDbEntity, createUnique } from "./utils.ts";
+import { createDbEntity, createUnique } from "kv-orm/mod.ts";
 import { UserEntity } from "./User.ts";
 
 export type Session = z.infer<typeof SessionEntity["schema"]>;

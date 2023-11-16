@@ -15,7 +15,7 @@ import type {
   DbWhereSelector,
   Simplify,
 } from "./types.d.ts";
-import { iter } from "../iter.ts";
+import { iter } from "./iter.ts";
 
 export class DbRepo<
   Entity extends DbEntity,

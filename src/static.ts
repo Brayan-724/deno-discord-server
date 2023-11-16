@@ -7,14 +7,26 @@ import sass from "denosass/mod.ts";
 
 const PUBLIC_DIR = new URL(import.meta.resolve("../public/"));
 
-const router = new Hono();
+const router = new Hono<Env>();
 
-router.get("*.ts", async (c, next) => {
+const byExtensionProcessors = {
+  async scss(c, filePath) {
+    const file = await readFile(filePath);
+    if (!file) return await c.notFound();
+
+    const compiled = sass(file, { style: "compressed" });
+
+    c.header("Content-Type", "text/css");
+    return c.body(compiled.to_buffer("compressed") as Uint8Array);
+  },
+} as Record<string, (c: DDSHonoContext, filePath: URL) => Promise<Response>>;
+
+router.get("*.ts", async (c) => {
   const filePath = resolveFilePath(c);
-  if (!filePath) return await next();
+  if (!filePath) return await c.notFound();
 
   const file = await readFile(filePath);
-  if (!file) return await next();
+  if (!file) return await c.notFound();
 
   const a = await bundle(filePath, { "minify": true });
 
@@ -22,26 +34,16 @@ router.get("*.ts", async (c, next) => {
   return c.body(a.code);
 });
 
-router.get("*.scss", async (c, next) => {
+router.get("*", async (c: DDSHonoContext, next) => {
   const filePath = resolveFilePath(c);
   if (!filePath) return await next();
 
-  const file = await readFile(filePath);
-  if (!file) return await next();
-
-  const compiled = sass(file, { style: "compressed" });
-
-  c.header("Content-Type", "text/css");
-  return c.body(compiled.to_buffer("compressed") as Uint8Array);
-});
-
-router.get("*", async (c, next) => {
-  const filePath = resolveFilePath(c);
-
-  if (!filePath) return await next();
+  const ext = filePath.pathname.split(".").pop() ?? "default";
+  if (byExtensionProcessors[ext]) {
+    return await byExtensionProcessors[ext](c, filePath);
+  }
 
   const file = await getFile(filePath);
-
   if (!file) return await next();
 
   const mimeType = getMimeType(filePath.pathname);

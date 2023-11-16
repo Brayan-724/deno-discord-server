@@ -1,14 +1,13 @@
+import { DbRepo } from "kv-orm/mod.ts";
+
 import { MessageEntity } from "./db/Message.ts";
 import { SessionEntity } from "./db/Session.ts";
 import { UserEntity } from "./db/User.ts";
-import { DbRepo } from "./db/factory.ts";
 
 const kv = await Deno.openKv();
 
-const db = {
+export default {
   messages: new DbRepo(kv, MessageEntity),
-  users: new DbRepo(kv, UserEntity),
   sessions: new DbRepo(kv, SessionEntity),
+  users: new DbRepo(kv, UserEntity),
 };
-
-export default db;

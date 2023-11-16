@@ -1,0 +1,61 @@
+@use "base.scss" as *;
+
+
+// MENU
+.menu {
+  flex: 0 0 57px;
+  padding: 0 20px 0 20px;
+  background: $menu-bg;
+  border-bottom: 1px solid darken($menu-bg, 2.5%);
+  display: flex;
+  align-items: center;
+
+  .menu-name {
+    font-weight: bold;
+    font-size: 1.3rem;
+    letter-spacing: 0.05rem;
+
+    @extend .hash-before;
+  }
+}
+
+
+// BUTTON
+.button {
+  background: $button-bg;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  appearance: none;
+  user-select: none;
+
+  > svg,
+  > img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.button-group {
+  .button:focus,
+  .button:active {
+    background: $button-bg-active;
+  }
+
+  .button:not(:last-of-type) {
+    border-right: 1px solid $border-accent;
+  }
+
+  .button + .button {
+    box-shadow: inset 1px 0 0 #393c41;
+  }
+}
+
+// ICONS
+svg[id] {
+  width: 0;
+  position: absolute;
+}

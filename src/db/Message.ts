@@ -1,5 +1,5 @@
 import { z } from "zod/mod.ts";
-import { createDbEntity } from "./utils.ts";
+import { createDbEntity } from "kv-orm/mod.ts";
 import { UserEntity } from "./User.ts";
 
 export type Message = z.infer<typeof MessageEntity["schema"]>;

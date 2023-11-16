@@ -7,18 +7,27 @@ import staticRouter from "./static.ts";
 import "./db.ts";
 import { getSessionId } from "deno_kv_auth/mod.ts";
 import db from "./db.ts";
+import { twind } from "./twind.ts";
+
+import viewIndex from "./views/index.tsx";
+import { html } from "hono/helper/html/index.ts";
+import wsRouter from "./ws.ts";
+
+// import "https://esm.run/lit@3"
+// import "https://esm.run/lit@3/decorators.js"
+// import "https://esm.run/lit@3/directive.js"
+// import "https://esm.run/lit@3/directives/when.js"
 
 const app = new Hono();
 
 app.use(compress());
+app.use(twind);
 
 app.route("/api", apiRouter);
 app.route("/static", staticRouter);
+app.route("/ws", wsRouter);
 
-app.get("/", async (c) => {
-  const index = new URL(import.meta.resolve("./views/index.html")).pathname;
-  const indexContent = await Deno.readTextFile(index);
-
+app.get("/", async (c: DDSHonoContext) => {
   const a = await getSessionId(c.req.raw);
 
   let b = "No logged";
@@ -26,7 +35,7 @@ app.get("/", async (c) => {
   if (a) {
     const userSession = await db.sessions.findFirst({
       where: { session_id: a },
-      include: true,
+      include: { user: true },
     });
 
     if (userSession) {
@@ -34,7 +43,7 @@ app.get("/", async (c) => {
     }
   }
 
-  return c.html(indexContent.replace("<%USER%>", b));
+  return c.html(html`<!DOCTYPE html> ${viewIndex(b)} `);
 });
 
 Deno.serve(app.fetch);

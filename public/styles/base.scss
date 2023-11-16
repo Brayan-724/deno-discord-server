@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,500,700");
+
+$body-bg: #121416;
+$body-color: #FFF;
+$servers-bg: #1E2124;
+$channels-bg: #2E3136;
+$border-accent: darken($channels-bg, 7.7%);
+$chat-bg: #36393E;
+$menu-bg: $chat-bg;
+$server-bg: $channels-bg;
+$server-bg-active: #7289DA;
+$server-marker-unread: #8A8E94;
+$server-marker-active: #FFF;
+$button-bg: #2E3136;
+$button-bg-active: lighten($button-bg, 5%);
+
+// GLOBAL
+*
+{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	
+	// we override focus on specific elements
+	&:focus
+	{
+		outline: 0;
+	}
+}
+
+html, body
+{
+	height: 100%;
+	background: $body-bg;
+	color: $body-color;
+	font-size: 16px;
+	font-family: "Roboto";
+}
+
+
