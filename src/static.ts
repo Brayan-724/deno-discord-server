@@ -5,6 +5,13 @@ import { getMimeType } from "hono/utils/mime.ts";
 import { bundle } from "emit/mod.ts";
 import sass from "denosass/mod.ts";
 
+import * as JSONC from "std/jsonc/mod.ts";
+
+const denoConfig = JSONC.parse(
+  await Deno.readTextFile(new URL(import.meta.resolve("../deno.jsonc"))),
+  { allowTrailingComma: true },
+);
+
 const PUBLIC_DIR = new URL(import.meta.resolve("../public/"));
 
 const router = new Hono<Env>();
@@ -28,10 +35,16 @@ router.get("*.ts", async (c) => {
   const file = await readFile(filePath);
   if (!file) return await c.notFound();
 
-  const a = await bundle(filePath, { "minify": true });
+  const bundled = await bundle(filePath, {
+    minify: true,
+    importMap: {
+      imports: denoConfig.imports,
+      scopes: denoConfig.scopes,
+    },
+  });
 
   c.header("Content-Type", "text/javascript");
-  return c.body(a.code);
+  return c.body(bundled.code);
 });
 
 router.get("*", async (c: DDSHonoContext, next) => {

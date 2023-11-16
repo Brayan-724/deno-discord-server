@@ -25,6 +25,30 @@
     "octokit": "https://esm.sh/@octokit/graphql@v7.0.2",
     "std/": "https://deno.land/std@0.205.0/",
     "twind": "https://esm.sh/@twind/core@1.1.3",
-    "zod/": "https://deno.land/x/zod@v3.21.4/"
+    "zod/": "https://deno.land/x/zod@v3.21.4/",
+
+    "lit/": "./public/vendor/cdn.jsdelivr.net/npm/lit@3/"
+  },
+
+  "scopes": {
+    "./public/vendor/cdn.jsdelivr.net/npm/": {
+      "/npm/@lit/reactive-element@2.0.2/+esm": "./public/vendor/cdn.jsdelivr.net/npm/@lit/reactive-element@2.0.2/+esm.js",
+      "/npm/lit-html@3.1.0/+esm": "./public/vendor/cdn.jsdelivr.net/npm/lit-html@3.1.0/+esm.js",
+      "/npm/lit-element@4.0.2/lit-element.js/+esm": "./public/vendor/cdn.jsdelivr.net/npm/lit-element@4.0.2/lit-element.js/+esm.js",
+      "/npm/lit-html@3.1.0/is-server.js/+esm": "./public/vendor/cdn.jsdelivr.net/npm/lit-html@3.1.0/is-server.js/+esm.js",
+      "/npm/@lit/reactive-element@2.0.2/decorators/custom-element.js/+esm": "./public/vendor/cdn.jsdelivr.net/npm/@lit/reactive-element@2.0.2/decorators/custom-element.js/+esm.js",
+      "/npm/@lit/reactive-element@2.0.2/decorators/property.js/+esm": "./public/vendor/cdn.jsdelivr.net/npm/@lit/reactive-element@2.0.2/decorators/property.js/+esm.js",
+      "/npm/@lit/reactive-element@2.0.2/decorators/state.js/+esm": "./public/vendor/cdn.jsdelivr.net/npm/@lit/reactive-element@2.0.2/decorators/state.js/+esm.js",
+      "/npm/@lit/reactive-element@2.0.2/decorators/event-options.js/+esm": "./public/vendor/cdn.jsdelivr.net/npm/@lit/reactive-element@2.0.2/decorators/event-options.js/+esm.js",
+      "/npm/@lit/reactive-element@2.0.2/decorators/query.js/+esm": "./public/vendor/cdn.jsdelivr.net/npm/@lit/reactive-element@2.0.2/decorators/query.js/+esm.js",
+      "/npm/@lit/reactive-element@2.0.2/decorators/query-all.js/+esm": "./public/vendor/cdn.jsdelivr.net/npm/@lit/reactive-element@2.0.2/decorators/query-all.js/+esm.js",
+      "/npm/@lit/reactive-element@2.0.2/decorators/query-async.js/+esm": "./public/vendor/cdn.jsdelivr.net/npm/@lit/reactive-element@2.0.2/decorators/query-async.js/+esm.js",
+      "/npm/@lit/reactive-element@2.0.2/decorators/query-assigned-elements.js/+esm": "./public/vendor/cdn.jsdelivr.net/npm/@lit/reactive-element@2.0.2/decorators/query-assigned-elements.js/+esm.js",
+      "/npm/@lit/reactive-element@2.0.2/decorators/query-assigned-nodes.js/+esm": "./public/vendor/cdn.jsdelivr.net/npm/@lit/reactive-element@2.0.2/decorators/query-assigned-nodes.js/+esm.js",
+      "/npm/lit-html@3.1.0/directive.js/+esm": "./public/vendor/cdn.jsdelivr.net/npm/lit-html@3.1.0/directive.js/+esm.js",
+      "/npm/lit-html@3.1.0/directives/style-map.js/+esm": "./public/vendor/cdn.jsdelivr.net/npm/lit-html@3.1.0/directives/style-map.js/+esm.js",
+      "/npm/lit-html@3.1.0/directives/when.js/+esm": "./public/vendor/cdn.jsdelivr.net/npm/lit-html@3.1.0/directives/when.js/+esm.js"
+    }
   }
+  // "importMap": "./public/vendor/import_map.json"
 }

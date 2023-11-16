@@ -1,9 +1,4 @@
-import { html, LitElement } from "https://cdn.jsdelivr.net/npm/lit@3/+esm";
-import {
-  customElement,
-  property,
-} from "https://cdn.jsdelivr.net/npm/lit@3/decorators.js/+esm";
-import { when } from "https://cdn.jsdelivr.net/npm/lit@3/directives/when.js/+esm";
+import { customElement, html, LitElement, property, when } from "./lit.ts";
 import { DiscordTimestamp, handleTimestamp } from "./util.ts";
 import { Profile, profiles } from "./options.ts";
 

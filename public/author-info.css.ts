@@ -1,4 +1,4 @@
-import { css } from "https://cdn.jsdelivr.net/npm/lit@3/+esm";
+import { css } from "./lit.ts";
 
 export default css`
 :host {

@@ -1,13 +1,4 @@
-import {
-  html,
-  LitElement,
-  nothing,
-} from "https://cdn.jsdelivr.net/npm/lit@3/+esm";
-import {
-  customElement,
-  property,
-} from "https://cdn.jsdelivr.net/npm/lit@3/decorators.js/+esm";
-import { styleMap } from "https://cdn.jsdelivr.net/npm/lit@3/directives/style-map.js/+esm";
+import { customElement, html, LitElement, property, styleMap } from "./lit.ts";
 import authorInfoCss from "./author-info.css.ts";
 
 @customElement("author-info")

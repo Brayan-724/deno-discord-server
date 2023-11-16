@@ -1,0 +1,35 @@
+{
+  "imports": {
+    "kv-orm/": "../../kv-orm/",
+    "https://esm.run/lit@3": "./cdn.jsdelivr.net/npm/lit@3/+esm.js",
+    "https://esm.run/lit@3/decorators.js": "./cdn.jsdelivr.net/npm/lit@3/decorators.js/+esm.js",
+    "https://esm.run/lit@3/directive.js": "./cdn.jsdelivr.net/npm/lit@3/directive.js/+esm.js",
+    "https://esm.run/lit@3/directives/when.js": "./cdn.jsdelivr.net/npm/lit@3/directives/when.js/+esm.js",
+    "https://esm.run/lit@3/directives/style-map.js": "./cdn.jsdelivr.net/npm/lit@3/directives/style-map.js/+esm.js",
+    "hono/mod.ts": "./deno.land/x/hono@v3.10.0/mod.ts",
+    "https://cdn.jsdelivr.net/npm/lit@3/+esm": "./cdn.jsdelivr.net/npm/lit@3/+esm.js",
+    "https://cdn.jsdelivr.net/": "./cdn.jsdelivr.net/",
+    "https://deno.land/": "./deno.land/",
+    "hono/jsx/jsx-runtime": "./deno.land/x/hono@v3.10.0/jsx/jsx-runtime.ts"
+  },
+  "scopes": {
+    "./cdn.jsdelivr.net/": {
+      "/npm/@lit/reactive-element@2.0.2/+esm": "./cdn.jsdelivr.net/npm/@lit/reactive-element@2.0.2/+esm.js",
+      "/npm/lit-html@3.1.0/+esm": "./cdn.jsdelivr.net/npm/lit-html@3.1.0/+esm.js",
+      "/npm/lit-element@4.0.2/lit-element.js/+esm": "./cdn.jsdelivr.net/npm/lit-element@4.0.2/lit-element.js/+esm.js",
+      "/npm/lit-html@3.1.0/is-server.js/+esm": "./cdn.jsdelivr.net/npm/lit-html@3.1.0/is-server.js/+esm.js",
+      "/npm/@lit/reactive-element@2.0.2/decorators/custom-element.js/+esm": "./cdn.jsdelivr.net/npm/@lit/reactive-element@2.0.2/decorators/custom-element.js/+esm.js",
+      "/npm/@lit/reactive-element@2.0.2/decorators/property.js/+esm": "./cdn.jsdelivr.net/npm/@lit/reactive-element@2.0.2/decorators/property.js/+esm.js",
+      "/npm/@lit/reactive-element@2.0.2/decorators/state.js/+esm": "./cdn.jsdelivr.net/npm/@lit/reactive-element@2.0.2/decorators/state.js/+esm.js",
+      "/npm/@lit/reactive-element@2.0.2/decorators/event-options.js/+esm": "./cdn.jsdelivr.net/npm/@lit/reactive-element@2.0.2/decorators/event-options.js/+esm.js",
+      "/npm/@lit/reactive-element@2.0.2/decorators/query.js/+esm": "./cdn.jsdelivr.net/npm/@lit/reactive-element@2.0.2/decorators/query.js/+esm.js",
+      "/npm/@lit/reactive-element@2.0.2/decorators/query-all.js/+esm": "./cdn.jsdelivr.net/npm/@lit/reactive-element@2.0.2/decorators/query-all.js/+esm.js",
+      "/npm/@lit/reactive-element@2.0.2/decorators/query-async.js/+esm": "./cdn.jsdelivr.net/npm/@lit/reactive-element@2.0.2/decorators/query-async.js/+esm.js",
+      "/npm/@lit/reactive-element@2.0.2/decorators/query-assigned-elements.js/+esm": "./cdn.jsdelivr.net/npm/@lit/reactive-element@2.0.2/decorators/query-assigned-elements.js/+esm.js",
+      "/npm/@lit/reactive-element@2.0.2/decorators/query-assigned-nodes.js/+esm": "./cdn.jsdelivr.net/npm/@lit/reactive-element@2.0.2/decorators/query-assigned-nodes.js/+esm.js",
+      "/npm/lit-html@3.1.0/directive.js/+esm": "./cdn.jsdelivr.net/npm/lit-html@3.1.0/directive.js/+esm.js",
+      "/npm/lit-html@3.1.0/directives/style-map.js/+esm": "./cdn.jsdelivr.net/npm/lit-html@3.1.0/directives/style-map.js/+esm.js",
+      "/npm/lit-html@3.1.0/directives/when.js/+esm": "./cdn.jsdelivr.net/npm/lit-html@3.1.0/directives/when.js/+esm.js"
+    }
+  }
+}

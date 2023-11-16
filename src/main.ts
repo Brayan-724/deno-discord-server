@@ -13,11 +13,6 @@ import viewIndex from "./views/index.tsx";
 import { html } from "hono/helper/html/index.ts";
 import wsRouter from "./ws.ts";
 
-// import "https://esm.run/lit@3"
-// import "https://esm.run/lit@3/decorators.js"
-// import "https://esm.run/lit@3/directive.js"
-// import "https://esm.run/lit@3/directives/when.js"
-
 const app = new Hono();
 
 app.use(compress());
