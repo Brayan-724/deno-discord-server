@@ -38,10 +38,10 @@ export default function (user: string) {
               </dds-message>
             </section>
 
-            <footer class="flex items-center flex-[0 0 70px] mt-auto px-5 py-4">
-              <input
+            <footer class="relative flex items-center flex-[0 0 70px] mt-auto max-h-[10rem] min-h-[1rem]">
+              <textarea
                 id="chat-input"
-                class="w-full h-full bg-white/[.07] rounded-xl px-4 py-3"
+                class="bg-white/[.07] rounded-xl px-4 py-3 inset-x-5 bottom-4 absolute resize-y max-h-[10rem]"
                 placeholder="Escribe tu mensaje"
               />
             </footer>

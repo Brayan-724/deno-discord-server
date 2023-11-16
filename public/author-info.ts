@@ -1,4 +1,11 @@
-import { customElement, html, LitElement, property, styleMap } from "./lit.ts";
+import {
+  customElement,
+  html,
+  LitElement,
+  nothing,
+  property,
+  styleMap,
+} from "./lit.ts";
 import authorInfoCss from "./author-info.css.ts";
 
 @customElement("author-info")

@@ -82,7 +82,9 @@ class DDSMessage extends LitElement {
         </div>
 
         <div class="discord-message-body">
-          <slot></slot>
+          <pre>
+            <slot></slot>
+          </pre>
           ${
       when(
         this.edited,

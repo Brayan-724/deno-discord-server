@@ -21,6 +21,15 @@ export default css`
 	background-color: #fafafa;
 }
 
+.discord-message-body pre {
+  margin: 0;
+  text-wrap: wrap;
+  text-wrap: balance;
+  text-wrap: pretty;
+  font-family: inherit;
+  white-space-collapse: preserve-breaks;
+}
+
 :host a {
 	color: #0096cf;
 	font-weight: normal;
