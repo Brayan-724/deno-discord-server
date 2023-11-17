@@ -6,7 +6,7 @@ import { ProfileEntity } from "./Profile.ts";
 export type Message = z.infer<typeof MessageEntity["schema"]>;
 
 export const MessageEntity = createDbEntity("messages", {
-  content: z.string().max(2048),
+  content: z.string(), //.max(2048),
 }, {
   user: UserEntity.optional(),
   profile: ProfileEntity,

@@ -75,7 +75,7 @@ router.use("/callback", async (c) => {
       const userId = await db.users.create({
         avatar: userInfo.viewer.avatarUrl,
         name: userInfo.viewer.name,
-        description: userInfo.viewer.status.message,
+        description: userInfo.viewer?.status?.message,
         authMethod: "github",
         auth_id: userInfo.viewer.id,
       });
