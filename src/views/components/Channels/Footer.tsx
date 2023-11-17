@@ -13,7 +13,7 @@ export default function ChannelsFooter(props: Props) {
         src="https://cdn.discordapp.com/avatars/809848854106341429/1fa599f86ca81117c97e5dacd7b0d1a0.png?size=48"
       />
       <div class="ml-[10px]">
-        <span class="username block font-light text-sm">{props.username}</span>
+        <span class="username w-[80px] block font-light text-sm truncate">{props.username}</span>
         <span class="tag block font-light text-xs text-body-color/45">
           online
         </span>

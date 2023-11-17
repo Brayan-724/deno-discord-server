@@ -1,3 +1,4 @@
+// deno-lint-ignore-file ban-types
 import { z } from "zod/mod.ts";
 
 const dbZodEntity = {
@@ -7,22 +8,29 @@ const dbZodEntity = {
 
 export type DbDefaultEntityKeys = keyof typeof dbZodEntity;
 
+const s_optionalEntity = Symbol.for("kv-orm-entity-optional");
+export type DbEntityOptional<
+  T extends object = {},
+  R extends DbEntityRelations = {},
+  E extends DbEntity<T, R> = DbEntity<T, R>,
+> = E & { [s_optionalEntity]: typeof s_optionalEntity };
+
 export type DbEntityRelations = {
-  [k: string]: DbEntity | [DbEntity, remoteId: string];
+  [k: string]: DbEntity | DbEntityOptional;
 };
 
 export type DbEntityZodRelated<R extends DbEntityRelations> = {
-  [K in keyof R as K extends string ? `${K}Id` : never]: z.ZodString;
+  [K in keyof R as K extends string ? `${K}Id` : never]: R[K] extends
+    DbEntityOptional ? z.ZodOptional<z.ZodString> : z.ZodString;
 };
 
 export type DbEntityRelated<R extends DbEntityRelations> = {
-  [K in keyof R as K extends string ? `${K}Id` : never]: string;
+  [K in keyof R as K extends string ? `${K}Id` : never]: R[K] extends
+    DbEntityOptional ? string | undefined : string;
 };
 
 export interface DbEntity<
-  // deno-lint-ignore ban-types
   T extends object = {},
-  // deno-lint-ignore ban-types
   R extends DbEntityRelations = {},
 > {
   prefix: string;
@@ -31,11 +39,12 @@ export interface DbEntity<
     "strict",
     z.ZodTypeAny
   >;
-  relations: R;
+  readonly relations: R;
+
+  optional(): DbEntityOptional<T, R>;
 }
 export const createDbEntity = <
   T extends z.ZodRawShape,
-  // deno-lint-ignore ban-types
   R extends DbEntityRelations = {},
 >(
   prefix: string,
@@ -51,11 +60,28 @@ export const createDbEntity = <
       ...Object.fromEntries(
         Object.entries(relations).map((
           [key],
-        ) => [`${key}Id`, z.string().uuid()]),
+        ) => [
+          `${key}Id`,
+          isOptional(relations[key])
+            ? z.string().uuid().optional()
+            : z.string().uuid(),
+        ]),
       ) as DbEntityZodRelated<R>,
     })
     .strict(),
+  optional() {
+    return {
+      ...this,
+      [s_optionalEntity]: s_optionalEntity,
+    };
+  },
 });
+
+export function isOptional<T extends object, R extends DbEntityRelations>(
+  entity: DbEntity<T, R> | DbEntityOptional<T, R>,
+): entity is DbEntityOptional<T, R> {
+  return (entity as DbEntityOptional<T, R>)[s_optionalEntity] === s_optionalEntity;
+}
 
 export function createUnique<T extends z.ZodTypeAny>(
   t: T,

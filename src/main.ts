@@ -23,22 +23,26 @@ app.route("/static", staticRouter);
 app.route("/ws", wsRouter);
 
 app.get("/", async (c: DDSHonoContext) => {
-  const a = await getSessionId(c.req.raw);
+  const sessionId = await getSessionId(c.req.raw);
 
-  let b = "No logged";
+  let username = "No logged";
 
-  if (a) {
+  if (sessionId) {
     const userSession = await db.sessions.findFirst({
-      where: { session_id: a },
+      where: { session_id: sessionId },
       include: { user: true },
     });
 
     if (userSession) {
-      b = userSession.user.name;
+      username = userSession.user.name;
     }
   }
 
-  return c.html(html`<!DOCTYPE html> ${viewIndex(b)} `);
+  return c.html(html`
+<!DOCTYPE html> 
+${viewIndex(!!sessionId, username)} 
+<script> window.is_logged=${sessionId ? "true" : "false"}</script>
+`);
 });
 
 Deno.serve(app.fetch);

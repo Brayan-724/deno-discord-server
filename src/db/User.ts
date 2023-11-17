@@ -6,6 +6,7 @@ export type User = z.infer<typeof UserEntity["schema"]>;
 export const UserAuthMethod = z.enum(["github"]);
 
 export const UserEntity = createDbEntity("users", {
+  avatar: z.string().url(),
   name: createUnique(z.string()),
   authMethod: UserAuthMethod,
   auth_id: createUnique(z.string()),

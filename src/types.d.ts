@@ -15,6 +15,7 @@ declare global {
 
   interface HTMLDDSMessage extends LitElement {
     "timestamp": string | Date;
+    "author": string;
   }
   var HTMLDDSMessage: {
     prototype: HTMLDDSMessage;

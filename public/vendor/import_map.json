@@ -2,6 +2,7 @@
   "imports": {
     "kv-orm/": "../../kv-orm/",
     "https://esm.run/lit@3": "./cdn.jsdelivr.net/npm/lit@3/+esm.js",
+    "https://esm.run/@lit/task": "./cdn.jsdelivr.net/npm/@lit/task/+esm.js",
     "https://esm.run/lit@3/decorators.js": "./cdn.jsdelivr.net/npm/lit@3/decorators.js/+esm.js",
     "https://esm.run/lit@3/directive.js": "./cdn.jsdelivr.net/npm/lit@3/directive.js/+esm.js",
     "https://esm.run/lit@3/directives/when.js": "./cdn.jsdelivr.net/npm/lit@3/directives/when.js/+esm.js",

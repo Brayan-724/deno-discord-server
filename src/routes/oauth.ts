@@ -30,7 +30,6 @@ router.use("/signout", async (c) => {
 router.use("/callback", async (c) => {
   try {
     const a = await handleCallback(c.req.raw, oauthConfig);
-    console.log(a.sessionId, a.tokens);
 
     const octokit = graphql.defaults({
       headers: {
@@ -74,6 +73,7 @@ router.use("/callback", async (c) => {
       });
     } else {
       const userId = await db.users.create({
+        avatar: userInfo.viewer.avatarUrl,
         name: userInfo.viewer.name,
         description: userInfo.viewer.status.message,
         authMethod: "github",

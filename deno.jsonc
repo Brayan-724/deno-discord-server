@@ -27,7 +27,7 @@
     "twind": "https://esm.sh/@twind/core@1.1.3",
     "zod/": "https://deno.land/x/zod@v3.21.4/",
 
-    "lit/": "./public/vendor/cdn.jsdelivr.net/npm/lit@3/"
+    "npm/": "./public/vendor/cdn.jsdelivr.net/npm/"
   },
 
   "scopes": {

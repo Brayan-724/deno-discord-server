@@ -3,6 +3,7 @@ import z from "zod/index.ts";
 import type {
   DbDefaultEntityKeys,
   DbEntity,
+  DbEntityOptional,
   DbEntityRelations,
 } from "./utils.ts";
 
@@ -118,44 +119,41 @@ export type DbSelectReturn<
 
 /////// _include
 
-export type DbRelationResolve<Relation extends DbEntityRelations[string]> =
-  Relation extends [infer Entity, infer PrimaryKey] ? [Entity, PrimaryKey]
-    : [Relation, "id"];
-
 export type DbRelationEntity<Relation extends DbEntityRelations[string]> =
-  DbRelationResolve<Relation>[0];
+  Relation;
 
 export type DbIncludeItem<Entity extends DbEntity> = {
   select?: DbSelector<Entity["schema"]["_output"]>;
   include?: DbIncluder<Entity["relations"]>;
 };
+
 export type DbIncluder<Relations extends DbEntityRelations> =
   | boolean
   | {
     [K in keyof Relations]?:
       | boolean
-      | DbIncludeItem<DbRelationEntity<Relations[K]>>;
+      | DbIncludeItem<Relations[K]>;
   };
 
 type Incl<
   Relations extends DbEntityRelations,
   Includers extends DbIncluder<Relations>,
   K extends keyof Relations & keyof Includers,
-  Includer extends Includers[K] = Includers[K],
-  Entity extends DbRelationEntity<Relations[K]> = DbRelationEntity<
-    Relations[K]
-  >,
 > = BooleanSwitcher<
-  Includer,
-  Entity["schema"]["_output"],
-  never,
-  & (Includer extends Pick<DbIncludeItem<Entity>, "select"> ? DbSelectReturn<
-      Entity["schema"]["_output"],
-      NonNullable<Includer["select"]>
+  Includers[K],
+  Relations[K]["schema"]["_output"],
+  undefined,
+  & (Includers[K] extends Pick<DbIncludeItem<Relations[K]>, "select">
+    ? DbSelectReturn<
+      Relations[K]["schema"]["_output"],
+      NonNullable<Includers[K]["select"]>
     >
-    : Entity["schema"]["_output"])
-  & (Includer extends Pick<DbIncludeItem<Entity>, "include">
-    ? DbIncludeReturn<Entity["relations"], NonNullable<Includer["include"]>>
+    : Relations[K]["schema"]["_output"])
+  & (Includers[K] extends Pick<DbIncludeItem<Relations[K]>, "include">
+    ? DbIncludeReturn<
+      Relations[K]["relations"],
+      NonNullable<Includers[K]["include"]>
+    >
     : {})
   & {}
 >;
@@ -166,7 +164,9 @@ export type DbIncludeReturn<
 > = BooleanSwitcher<
   Includer,
   {
-    [K in keyof Relations]: DbRelationEntity<Relations[K]>["schema"]["_output"];
+    [K in keyof Relations]:
+      | Relations[K]["schema"]["_output"]
+      | (Relations[K] extends DbEntityOptional ? undefined : never);
   },
   {},
   {
@@ -175,6 +175,6 @@ export type DbIncludeReturn<
         : Includer[K] extends boolean ? K
         : Includer[K] extends object ? K
         : never
-    ]: Incl<Relations, Includer, K, Includer[K]>;
+    ]: Incl<Relations, Includer, K> | (Relations[K] extends DbEntityOptional ? undefined : never);
   }
 >;

@@ -1,7 +1,7 @@
 import Channels from "./components/Channels.tsx";
 import Servers from "./components/Servers.tsx";
 
-export default function (user: string) {
+export default function (isLogged: boolean, user: string) {
   return (
     <html lang="en" class="bg-body-bg text-body-color">
       <head>

@@ -1,30 +1,4 @@
-type Avatars = {
-  blue: string;
-  gray: string;
-  green: string;
-  orange: string;
-  red: string;
-  [key: string]: string;
-};
-
-export type Profile = {
-  author?: string;
-  avatar?: string;
-  bot?: boolean;
-  roleColor?: string;
-};
-
-type DiscordMessageOptions = {
-  avatars?: Avatars;
-  profiles?: { [key: string]: Profile };
-  defaultTheme?: string;
-  defaultMode?: string;
-};
-
-const { $discordMessage = {} }: { $discordMessage: DiscordMessageOptions } =
-  window as any;
-
-const discordAvatars: Avatars = {
+const defaultAvatars: Record<string, string> = {
   blue:
     "https://cdn.discordapp.com/attachments/654503812593090602/665721745466195978/blue.png",
   gray:
@@ -37,20 +11,29 @@ const discordAvatars: Avatars = {
     "https://cdn.discordapp.com/attachments/654503812593090602/665721752277483540/red.png",
 };
 
-const globalAvatars: any = $discordMessage.avatars ?? {};
+// FIXME: Remind Update This
+export type Profile = {
+  avatar: string;
+  name: string;
+  role: "admin" | "moderator" | "guest";
+  id: string;
+  createdAt: Date;
+  userId: string;
+};
 
-export const avatars: Avatars = Object.assign(discordAvatars, globalAvatars, {
-  default: discordAvatars[globalAvatars.default] ?? globalAvatars.default ??
-    discordAvatars.blue,
-});
+const profile_cache = new Map<string, Profile>();
 
-export const profiles: { [key: string]: Profile } = $discordMessage.profiles ??
-  {};
+export async function get_profile(profile_id: string) {
+  if (profile_cache.has(profile_id)) {
+    return profile_cache.get(profile_id)!;
+  } else {
+    const res = await fetch("/api/profile/" + profile_id);
+    const data = await res.json();
+    if (data.done) {
+      profile_cache.set(profile_id, data.data);
+      return data.data;
+    }
 
-export const defaultTheme: string = $discordMessage.defaultTheme !== "light"
-  ? "dark"
-  : "light";
-
-export const defaultMode: string = $discordMessage.defaultMode !== "compact"
-  ? "cozy"
-  : "compact";
+    throw new Error(data.data);
+  }
+}
