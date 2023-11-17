@@ -39,7 +39,9 @@ router.get("*.ts", async (c) => {
     minify: true,
     importMap: {
       imports: {
-        "npm/": new URL(import.meta.resolve("../public/vendor/cdn.jsdelivr.net/npm/")).pathname,
+        "npm/":
+          new URL(import.meta.resolve("../public/vendor/cdn.jsdelivr.net/npm/"))
+            .pathname,
       },
       scopes: denoConfig.scopes,
     },
