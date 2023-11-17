@@ -8,10 +8,9 @@ import {
   when,
 } from "./lit.ts";
 import { DiscordTimestamp, handleTimestamp } from "./util.ts";
-import { get_profile, Profile } from "./options.ts";
+import { get_profile, getRandomAvatar, Profile } from "./options.ts";
 
 import ddsMessageCss from "./dds-message.css.ts";
-import { getRandomAvatar } from "../src/db/Profile.ts";
 
 @customElement("dds-message")
 class DDSMessage extends LitElement {

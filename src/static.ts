@@ -38,7 +38,9 @@ router.get("*.ts", async (c) => {
   const bundled = await bundle(filePath, {
     minify: true,
     importMap: {
-      imports: denoConfig.imports,
+      imports: {
+        "npm/": new URL(import.meta.resolve("../public/vendor/cdn.jsdelivr.net/npm/")).pathname,
+      },
       scopes: denoConfig.scopes,
     },
   });
