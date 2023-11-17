@@ -70,7 +70,7 @@ wsRouter.get("/", async (c: DDSHonoContext) => {
 
       db.messages.create({
         content: data,
-        socketId,
+        profileId: socketId,
         userId: user?.id,
       });
     } else if (topic === "name") {

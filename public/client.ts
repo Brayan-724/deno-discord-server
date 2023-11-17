@@ -20,7 +20,7 @@ declare global {
 fetch("/api/messages").then((res) => res.json()).then((messages) => {
   for (const message of messages) {
     appendMessage(
-      message.socketId,
+      message.profileId,
       (+(new Date(message.createdAt))).toString(),
       message.content,
     );
