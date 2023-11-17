@@ -45,7 +45,7 @@ class DDSMessage extends LitElement {
   _profile = new Task(this, {
     task: async ([authorId]) => {
       const profile = await get_profile(authorId);
-      return profile
+      return profile;
     },
     args: () => [this.author],
   });

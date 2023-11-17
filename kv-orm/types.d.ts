@@ -175,6 +175,8 @@ export type DbIncludeReturn<
         : Includer[K] extends boolean ? K
         : Includer[K] extends object ? K
         : never
-    ]: Incl<Relations, Includer, K> | (Relations[K] extends DbEntityOptional ? undefined : never);
+    ]:
+      | Incl<Relations, Includer, K>
+      | (Relations[K] extends DbEntityOptional ? undefined : never);
   }
 >;

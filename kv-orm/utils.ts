@@ -80,7 +80,8 @@ export const createDbEntity = <
 export function isOptional<T extends object, R extends DbEntityRelations>(
   entity: DbEntity<T, R> | DbEntityOptional<T, R>,
 ): entity is DbEntityOptional<T, R> {
-  return (entity as DbEntityOptional<T, R>)[s_optionalEntity] === s_optionalEntity;
+  return (entity as DbEntityOptional<T, R>)[s_optionalEntity] ===
+    s_optionalEntity;
 }
 
 export function createUnique<T extends z.ZodTypeAny>(
