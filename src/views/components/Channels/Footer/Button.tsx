@@ -13,6 +13,7 @@ export default function ChannelsFooterButton(props: Props) {
 [& > svg, & > img]:(max-w-full max-h-full)"
     >
       {props.children}
+      <span class="tooltip">{props['aria-label']}</span>
     </button>
   );
 }

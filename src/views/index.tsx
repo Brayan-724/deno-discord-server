@@ -10,7 +10,7 @@ export default function (isLogged: boolean, user: string) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <link rel="stylesheet" href="/static/base.css" />
-
+        <link rel="stylesheet" href="/static/styles.css" />
         <script src="/static/components.ts" />
       </head>
       <body class="bg-body-bg text-body-color">
@@ -31,7 +31,7 @@ export default function (isLogged: boolean, user: string) {
 
             <section
               id="chat"
-              class="flex flex(col 1) h-full overflow-y-auto overflow-x-none"
+              class="scroller-def flex flex(col 1) h-full overflow-y-auto overflow-x-none "
             >
               <dds-message author="Apika Luca" bot>
                 Welcome
@@ -47,7 +47,7 @@ export default function (isLogged: boolean, user: string) {
             </footer>
           </div>
         </main>
-
+        
         <svg id="icon-friends" viewBox="-289 382 32 27.1">
           <style id="style3">
             {`
@@ -120,15 +120,13 @@ export default function (isLogged: boolean, user: string) {
             stroke="#FFF"
             d="M4.5 4.5l9 9"
             stroke-linecap="round"
-          >
-          </path>
+          ></path>
           <path
             class="dd"
             stroke="#FFF"
             d="M13.5 4.5l-9 9"
             stroke-linecap="round"
-          >
-          </path>
+          ></path>
         </svg>
 
         <svg id="icon-invite" viewBox="0 0 16 16">

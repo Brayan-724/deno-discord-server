@@ -1,0 +1,44 @@
+.scroller-def::-webkit-scrollbar {
+    background-color: transparent; /*1a1b1e*/
+    width: 16px;
+}
+
+.scroller-def::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
+    background-color: #2b2d31;
+    border-radius: 10px;
+    border: 4px solid transparent;
+}
+
+.button {
+    position: relative;
+    align-items: center;
+}
+
+.button:hover {
+    background: #38393f;
+    border-radius: 5px;
+
+}
+
+.tooltip {
+    visibility: hidden;
+    width: auto;
+    background-color: #1a1b1e;
+    color: #FFF;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.button:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
