@@ -36,9 +36,27 @@
     transform: translateX(-50%);
     opacity: 0;
     transition: opacity 0.3s;
+    font-size: 0.7rem;
+}
+
+.tooltip::after {
+    position: absolute;
+    background: #1a1b1e;;
+    content: "";
+    display: block;
+    clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+    width: 18px;
+    height: 8px;
+    left: calc(50% - 9px);
+    bottom: -6px;
 }
 
 .button:hover .tooltip {
     visibility: visible;
     opacity: 1;
+}
+
+.button > svg {
+    width: 16px;
+    height: 32px;
 }
