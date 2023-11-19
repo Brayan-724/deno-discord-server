@@ -7,7 +7,7 @@ scripts:
     cmd: deno run -A https://deno.land/x/kview/install.ts
 
   dev:
-    cmd: deno run --unstable --env --watch src/main.ts
+    cmd: deno run --unstable --env --watch -A src/main.ts
     allow:
       net:
         - "0.0.0.0"

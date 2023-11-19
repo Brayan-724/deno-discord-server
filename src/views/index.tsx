@@ -47,7 +47,7 @@ export default function (isLogged: boolean, user: string) {
             </footer>
           </div>
         </main>
-        
+
         <svg id="icon-friends" viewBox="-289 382 32 27.1">
           <style id="style3">
             {`
@@ -81,7 +81,7 @@ export default function (isLogged: boolean, user: string) {
           </g>
         </svg>
 
-        <svg id="icon-mute" viewBox="0 0 16 16">
+        <svg id="icon-mute" viewBox="0 0 16 16" width="16" height="32">
           <path
             fill="#c2c3c5"
             d="M12.5,8v1c0,2.2-1.8,4-4,4h-1c-2.2,0-4-1.8-4-4V8h-1v1 c0,2.8,2.2,5,5,5v1H7c-0.3,0-0.5,0.2-0.5,0.5C6.5,15.8,6.7,16,7,16h2c0.3,0,0.5-0.2,0.5-0.5C9.5,15.2,9.3,15,9,15H8.5v-1 c2.8,0,5-2.2,5-5V8H12.5z M8,12c1.9,0,3.5-1.6,3.5-3.5v-5C11.5,1.6,9.9,0,8,0C6.1,0,4.5,1.6,4.5,3.5v5C4.5,10.4,6.1,12,8,12z M5.5,3.5C5.5,2.1,6.6,1,8,1c1.4,0,2.5,1.1,2.5,2.5v5C10.5,9.9,9.4,11,8,11c-1.4,0-2.5-1.1-2.5-2.5V3.5z"
@@ -120,13 +120,15 @@ export default function (isLogged: boolean, user: string) {
             stroke="#FFF"
             d="M4.5 4.5l9 9"
             stroke-linecap="round"
-          ></path>
+          >
+          </path>
           <path
             class="dd"
             stroke="#FFF"
             d="M13.5 4.5l-9 9"
             stroke-linecap="round"
-          ></path>
+          >
+          </path>
         </svg>
 
         <svg id="icon-invite" viewBox="0 0 16 16">
